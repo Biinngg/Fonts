@@ -9,15 +9,31 @@
 import UIKit
 
 class SecondMasterViewController: UITableViewController {
+    
+    var fontFamilyIndex: Int = 0
+    var language: String?
+    var fontFamilyArray: [String: [CTFontDescriptorRef]]?
+    private var fontFamilies: [String]?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            self.clearsSelectionOnViewWillAppear = false
+            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = language
+        
+        if let keys = fontFamilyArray?.keys {
+            fontFamilies = Array(keys)
+        }
+        
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: fontFamilyIndex), atScrollPosition: .Top, animated: true)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,70 +44,46 @@ class SecondMasterViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return fontFamilyArray?.count ?? 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        let fontFamily = fontFamilies?[section]
+        let fontArray = fontFamily != nil ? fontFamilyArray?[fontFamily!] : nil
+        return fontArray?.count ?? 0
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return fontFamilies?[section]
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        
+        let fontFamily = fontFamilies?[indexPath.section]
+        let fontArray = fontFamily != nil ? fontFamilyArray?[fontFamily!] : nil
+        let fontDescriptor = fontArray?[indexPath.row]
+        let kCTFontVisibleNameAttribute = "NSFontVisibleNameAttribute"
+        let downloaded = CTFontDescriptorCopyAttribute(fontDescriptor, kCTFontDownloadedAttribute) as Bool
+        cell.textLabel?.text = CTFontDescriptorCopyLocalizedAttribute(fontDescriptor, kCTFontVisibleNameAttribute, nil) as? String
+        cell.accessoryType = downloaded ? .Checkmark : .None
 
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+                let fontFamily = fontFamilies?[indexPath.section]
+                let fontArray = fontFamily != nil ? fontFamilyArray?[fontFamily!] : nil
+                controller.fontDescriptor = fontArray?[indexPath.row]
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
     }
-    */
 
 }

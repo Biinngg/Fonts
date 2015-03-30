@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1485EEC1AC91507002C3083 /* SecondMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1485EEB1AC91507002C3083 /* SecondMasterViewController.swift */; };
 		C181C5E91AC8E42900DF3682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181C5E81AC8E42900DF3682 /* AppDelegate.swift */; };
 		C181C5EB1AC8E42900DF3682 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181C5EA1AC8E42900DF3682 /* MasterViewController.swift */; };
 		C181C5ED1AC8E42900DF3682 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181C5EC1AC8E42900DF3682 /* DetailViewController.swift */; };
-		C181C5F01AC8E42900DF3682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C181C5EE1AC8E42900DF3682 /* Main.storyboard */; };
 		C181C5F21AC8E42900DF3682 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C181C5F11AC8E42900DF3682 /* Images.xcassets */; };
-		C181C5F51AC8E42900DF3682 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C181C5F31AC8E42900DF3682 /* LaunchScreen.xib */; };
 		C181C6011AC8E42900DF3682 /* FontsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C181C6001AC8E42900DF3682 /* FontsTests.swift */; };
+		C1E6C8EA1AC9466B00DDF3EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1485F2D1AC94457002C3083 /* Main.storyboard */; };
+		C1E6C8EB1AC9466F00DDF3EF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1485F2F1AC94457002C3083 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +28,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1485EEB1AC91507002C3083 /* SecondMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondMasterViewController.swift; sourceTree = "<group>"; };
+		C1485F2E1AC94457002C3083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1485F301AC94457002C3083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C181C5E31AC8E42900DF3682 /* Fonts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fonts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C181C5E71AC8E42900DF3682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C181C5E81AC8E42900DF3682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C181C5EA1AC8E42900DF3682 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		C181C5EC1AC8E42900DF3682 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		C181C5EF1AC8E42900DF3682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C181C5F11AC8E42900DF3682 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C181C5F41AC8E42900DF3682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C181C5FA1AC8E42900DF3682 /* FontsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FontsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C181C5FF1AC8E42900DF3682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C181C6001AC8E42900DF3682 /* FontsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsTests.swift; sourceTree = "<group>"; };
+		C1E6C8EC1AC946D800DDF3EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		C1E6C8ED1AC946D800DDF3EF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +85,11 @@
 			children = (
 				C181C5E81AC8E42900DF3682 /* AppDelegate.swift */,
 				C181C5EA1AC8E42900DF3682 /* MasterViewController.swift */,
+				C1485EEB1AC91507002C3083 /* SecondMasterViewController.swift */,
 				C181C5EC1AC8E42900DF3682 /* DetailViewController.swift */,
-				C181C5EE1AC8E42900DF3682 /* Main.storyboard */,
+				C1485F2D1AC94457002C3083 /* Main.storyboard */,
+				C1485F2F1AC94457002C3083 /* LaunchScreen.xib */,
 				C181C5F11AC8E42900DF3682 /* Images.xcassets */,
-				C181C5F31AC8E42900DF3682 /* LaunchScreen.xib */,
 				C181C5E61AC8E42900DF3682 /* Supporting Files */,
 			);
 			path = Fonts;
@@ -176,8 +181,8 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = C181C5DA1AC8E42900DF3682;
 			productRefGroup = C181C5E41AC8E42900DF3682 /* Products */;
@@ -195,9 +200,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C181C5F01AC8E42900DF3682 /* Main.storyboard in Resources */,
-				C181C5F51AC8E42900DF3682 /* LaunchScreen.xib in Resources */,
 				C181C5F21AC8E42900DF3682 /* Images.xcassets in Resources */,
+				C1E6C8EB1AC9466F00DDF3EF /* LaunchScreen.xib in Resources */,
+				C1E6C8EA1AC9466B00DDF3EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1485EEC1AC91507002C3083 /* SecondMasterViewController.swift in Sources */,
 				C181C5ED1AC8E42900DF3682 /* DetailViewController.swift in Sources */,
 				C181C5EB1AC8E42900DF3682 /* MasterViewController.swift in Sources */,
 				C181C5E91AC8E42900DF3682 /* AppDelegate.swift in Sources */,
@@ -240,18 +246,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C181C5EE1AC8E42900DF3682 /* Main.storyboard */ = {
+		C1485F2D1AC94457002C3083 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C181C5EF1AC8E42900DF3682 /* Base */,
+				C1485F2E1AC94457002C3083 /* Base */,
+				C1E6C8EC1AC946D800DDF3EF /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C181C5F31AC8E42900DF3682 /* LaunchScreen.xib */ = {
+		C1485F2F1AC94457002C3083 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C181C5F41AC8E42900DF3682 /* Base */,
+				C1485F301AC94457002C3083 /* Base */,
+				C1E6C8ED1AC946D800DDF3EF /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -411,6 +419,7 @@
 				C181C6061AC8E42900DF3682 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C181C6071AC8E42900DF3682 /* Build configuration list for PBXNativeTarget "FontsTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +428,7 @@
 				C181C6091AC8E42900DF3682 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

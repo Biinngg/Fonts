@@ -34,57 +34,54 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="rOL-Ou-C0O">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Designing for iOS
-iOS embodies the following themes:
+                                <mutableString key="text">1.1 为iOS而设计（Designing for iOS）
+iOS 的革新关键词如下：
 
-Deference. The UI helps people understand and interact with the content, but never competes with it.
-Clarity. Text is legible at every size, icons are precise and lucid, adornments are subtle and appropriate, and a sharpened focus on functionality motivates the design.
-Depth. Visual layers and realistic motion impart vitality and heighten people’s delight and understanding.
+遵从：UI能够更好地帮助用户理解内容并与之互动，但却不会分散用户对内容本身的注意力。
+清晰：各种大小的文字应该易读，图标应该醒目，去除多余的修饰，突出重点，很好地突显了设计理念。
+深度：视觉的层次和生动的交互动作会赋予UI新的活力，不但帮助用户更好理解新UI的操作并让用户在使用过程中感到惊喜。
 
-Whether you’re redesigning an older app or creating a new one, consider approaching the job in this way:
+无论你是重新设计一个现有的应用或是重新开发一个，请尝试下列方法：
 
-First, look past the UI to the app’s core functionality and affirm its relevance.
-Next, use the themes of iOS to inform the design of the UI and the user experience. Add details and embellishments with care and never gratuitously.
-Finally, be sure to design your UI to adapt to various devices and modes so that users can enjoy your app in as many contexts as possible.
-Throughout the process, be prepared to defy precedent, question assumptions, and let a focus on content and functionality motivate every design decision.
+首先，去除了UI元素让应用的核心功能呈现得更加直接并强调其相关性。
+其次，直接使用iOS的系统主题让其成为应用的UI，这样能给用户统一的视觉感受。
+最后，保证你设计的UI可以适应各种设备和不同操作模式，这样用户可以在不同场景下舒适地享用你的应用。
+在整个设计过程中，时刻准备着推翻先例，假设问题，并以重点内容和功能（为目标）来驱动每个细节设计。
 
-Defer to Content
+1.1.1 以内容为核心（Defer to Content）
+虽然明快美观的UI和流畅的动态效果是iOS体验的亮点，但内容始终是iOS的核心。
 
-Although crisp, beautiful UI and fluid motion are highlights of the iOS experience, the user’s content is at its heart.
+这里有一些方法，以确保你的设计能够提升你的应用功能体验并关注内容本身。
 
-Here are some ways to make sure that your designs elevate functionality and defer to the user’s content.
+充分利用整个屏幕。天气应用是最好的例子：漂亮的天气图片充满全屏，呈现用户所在地当前天气情况这最重要的信息，同时也留出空间呈现了每个时段的气温数据。
 
-Take advantage of the whole screen. Weather is a great example of this approach: The beautiful, full-screen depiction of a location’s current weather instantly conveys the most important information, with room to spare for hourly data.
+尽量减少视觉修饰和拟物化设计的使用。UI面板、渐变和阴影有时会让UI元素显得很厚重，致使抢了内容的风头。应该以内容为核心，让UI成为内容的支撑。
 
-Reconsider visual indicators of physicality and realism. Bezels, gradients, and drop shadows sometimes lead to heavier UI elements that can overpower or compete with the content. Instead, focus on the content and let the UI play a supporting role.
+尝试使用半透明底板。半透明的控件——比如控制中心——关联了使用场景，帮助用户看到更多可用的内容，并可以起到短暂的提示作用。在iOS中，透明的控件只让它遮挡住的地方变得模糊——看上去像蒙着一层米纸一样——它并没有遮挡屏幕剩余的部分。
 
-Let translucent UI elements hint at the content behind them. Translucent elements—such as Control Center—provide context, help users see that more content is available, and can signal transience. In iOS, a translucent element blurs only the content directly behind it—giving the impression of looking through rice paper—it doesn’t blur the rest of the screen.
+1.1.2 保证清晰度（Provide Clarity）
+保证清晰度是另一个方法，以确保你的应用中内容始终是核心。以下是几种方法，让最重要的内容和功能清晰，易于交互。
 
-Provide Clarity
+使用大量留白。留白让重要内容和功能显得更加醒目。此外，留白可以传达一种平静和安宁的视觉感受，它可以使一个应用看起来更加聚焦和高效。
 
-Providing clarity is another way to ensure that content is paramount in your app. Here are some ways to make the most important content and functionality clear and easy to interact with.
+让颜色简化UI。一个主题色——比如在记事本中使用的黄色——让重要区域更加醒目并巧妙地表示交互性。这同时也给了一个应用一个统一的视觉主题。内置应用使用家族化的系统颜色，无论在深色和浅色背景上看起来都干净，纯粹。
 
-Use plenty of negative space. Negative space makes important content and functionality more noticeable and easier to understand. Negative space can also impart a sense of calm and tranquility, and it can make an app look more focused and efficient.
+通过使用系统字体确保易读性。iOS的系统字体自动调整行间距和行的高度，使阅读时文本清晰易读，无论何种大小的字号都表现良好。无论你是使用系统或是自定义字体，务必使用动态型，这样你的应用可以在用户选择不同字号时做出应对。
 
-Let color simplify the UI. A key color—such as yellow in Notes—highlights important state and subtly indicates interactivity. It also gives an app a consistent visual theme. The built-in apps use a family of pure, clean system colors that look good at every tint and on both dark and light backgrounds.
+使用无边框的按钮。默认情况下，所有bar上的按钮都是无边框的。在内容区域，无边框按钮以文案、颜色以及操作指引标题来表明按钮功能。当按钮被激活时，该按钮呈现高亮的浅色状态来作为操作响应。
 
-Ensure legibility by using the system fonts. iOS system fonts automatically adjust letter spacing and line height so that text is easy to read and looks great at every size. Whether you use system or custom fonts, be sure to adopt Dynamic Type so your app can respond when the user chooses a different text size.
+1.1.3 用深度来体现层次（Use Depth to Communicate）
+iOS经常在不同的层级上展现内容，用以表达分组和位置，并帮助用户了解在屏幕上的对象之间的关系。
 
-Embrace borderless buttons. By default, all bar buttons are borderless. In content areas, a borderless button uses context, color, and a call-to-action title to indicate interactivity. And when it makes sense, a content-area button can display a thin border or tinted background that makes it distinctive.
+通过使用一个在主屏幕上方的半透明背景浮层来区分文件夹和其余部分的内容。
 
-Use Depth to Communicate
+备忘录以不同的层级展示，如插图所示。用户在使用备忘录里的某个条目时，其他的条目被收起在屏幕下方（译者按：其实这个视觉提示使用起来很隐晦）。
 
-iOS often displays content in distinct layers that convey hierarchy and position, and that help users understand the relationships among onscreen objects.
+日历有较深的层级，当他们在翻阅年、月、日的时候，以及增强的交互动画给用户一种层级纵深感（循序切换的层次，从年到月到日）。在滚动年份视图时，用户可以即时看到今天的日期以及其他日历任务。当用户处于月份视图时，点击年份视图按钮，月份会缩小至年份视图中的所处位置。
 
-By using a translucent background and appearing to float above the Home screen, folders separate their content from the rest of the screen.
+今天的日期依然处于高亮状态，年份出现在返回按钮处，这样用户可以清楚地知道他们在哪儿，他们从哪里进来并且知道如何返回。
 
-Reminders displays lists in layers, as shown here. When users work with one list, the other lists are collected together at the bottom of the screen.
-
-Calendar uses enhanced transitions to give users a sense of hierarchy and depth as they move between viewing years, months, and days. In the scrolling year view shown here, users can instantly see today’s date and perform other calendar tasks.
-
-When users select a month, the year view zooms in and reveals the month view. Today’s date remains highlighted and the year appears in the back button, so users know exactly where they are, where they came from, and how to get back.
-
-A similar transition happens when users select a day: The month view appears to split apart, pushing the current week to the top of the screen and revealing the hourly view of the selected day. With each transition, Calendar reinforces the hierarchical relationship between years, months, and days.</mutableString>
+类似的过渡动画出现在用户选择一个日期时：月份视图从所选位置分开，将当前的周日期推向屏幕顶端并翻转出以小时为单位的当天时间视图。这些动画加强了日历上年月日之间的关系的感知度。</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -154,7 +151,7 @@ A similar transition happens when users select a day: The month view appears to 
                                             <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
@@ -194,7 +191,7 @@ A similar transition happens when users select a day: The month view appears to 
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0ZZ-iB-Nq8">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

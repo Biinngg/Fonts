@@ -11,8 +11,8 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [AnyObject]()
-
+    var fontDictionary = [String: [String : [CTFontDescriptorRef]]]()
+    var languages: [String]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,15 +24,44 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        activityIndicator.startAnimating()
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44))
+        activityIndicator.center = CGPoint(x: tableView.frame.width/2.0, y: 22)
+        footerView.addSubview(activityIndicator)
+        tableView.tableFooterView = footerView
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let descriptorOptions = [kCTFontDownloadableAttribute as String: true]
+            let descriptor = CTFontDescriptorCreateWithAttributes(descriptorOptions)
+            let fontDescriptors = CTFontDescriptorCreateMatchingFontDescriptors(descriptor, nil) as [CTFontDescriptorRef]
+            fontDescriptors.map { fontDescriptor -> Void in
+                let kCTFontDesignLanguagesAttribute = "NSCTFontDesignLanguagesAttribute"
+                let languages = CTFontDescriptorCopyAttribute(fontDescriptor, kCTFontDesignLanguagesAttribute) as? [String]
+                let fontFamily = CTFontDescriptorCopyLocalizedAttribute(fontDescriptor, kCTFontFamilyNameAttribute, nil) as? String ?? "other"
+                languages?.map { language -> Void in
+                    var fontFamilyArray = self.fontDictionary[language] ?? [String : [CTFontDescriptorRef]]()
+                    var fontArray = fontFamilyArray[fontFamily] ?? [CTFontDescriptorRef]()
+                    fontArray.append(fontDescriptor)
+                    fontFamilyArray[fontFamily] = fontArray
+                    self.fontDictionary[language] = fontFamilyArray
+                }
+                return
+            }
+            self.languages = Array(self.fontDictionary.keys)
+            self.languages?.sort { $0 < $1 }
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+                self.tableView.tableFooterView = nil
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,21 +69,16 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func insertNewObject(sender: AnyObject) {
-        objects.insert(NSDate(), atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    }
-
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "show" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                let controller = segue.destinationViewController as SecondMasterViewController
+                controller.fontFamilyIndex = indexPath.row
+                let language = languages?[indexPath.section]
+                controller.language = language
+                controller.fontFamilyArray = language != nil ? fontDictionary[language!] : nil
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
@@ -63,35 +87,36 @@ class MasterViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return fontDictionary.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        let key = languages?[section]
+        let fonts = key != nil ? fontDictionary[key!] : nil
+        return fonts?.count ?? 0
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return languages?[section]
+    }
+    
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        return languages
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel!.text = object.description
+        
+        let key = languages?[indexPath.section]
+        var fontFamilies: [String]?
+        if key != nil {
+            if let families = fontDictionary[key!]?.keys {
+                fontFamilies = Array(families)
+            }
+        }
+        cell.textLabel!.text = fontFamilies?[indexPath.row]
         return cell
     }
-
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            objects.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
-    }
-
 
 }
 
